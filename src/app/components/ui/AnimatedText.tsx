@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface AnimatedTextProps {
   children: React.ReactNode;
@@ -15,9 +16,11 @@ export default function AnimatedText({
   className = "",
   delay = 0,
 }: AnimatedTextProps) {
+  const hydrated = useHydrated();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={hydrated ? { opacity: 0, y: 30 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}

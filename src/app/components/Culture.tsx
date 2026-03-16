@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 const values = [
   {
@@ -56,6 +57,8 @@ const values = [
 ];
 
 export default function Culture() {
+  const hydrated = useHydrated();
+
   return (
     <section id="kultura" className="py-16 md:py-24 px-6 relative overflow-hidden">
       {/* Background glow orbs */}
@@ -84,7 +87,7 @@ export default function Culture() {
           {values.map((value, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
@@ -109,7 +112,7 @@ export default function Culture() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 text-center"

@@ -3,13 +3,16 @@
 import { motion } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 export default function Consultation() {
+  const hydrated = useHydrated();
+
   return (
     <section id="konzultacio" className="py-16 md:py-24 px-6">
       <div className="mx-auto max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={hydrated ? { opacity: 0, y: 20 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center p-8 md:p-14 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm relative overflow-hidden"

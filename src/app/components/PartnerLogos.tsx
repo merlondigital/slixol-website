@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedText from "./ui/AnimatedText";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 const partnerFiles = [
   "partner-01.png", "partner-02.png", "partner-03.svg", "partner-04.jpeg",
@@ -41,6 +42,8 @@ function LogoItem({ file, index }: { file: string; index: number }) {
 }
 
 export default function PartnerLogos() {
+  const hydrated = useHydrated();
+
   return (
     <section className="py-16 md:py-24 overflow-hidden">
       <div className="text-center mb-12 px-6">
@@ -54,7 +57,7 @@ export default function PartnerLogos() {
 
       {/* Row 1 - left to right */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         className="mb-8"
@@ -68,7 +71,7 @@ export default function PartnerLogos() {
 
       {/* Row 2 - right to left */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={hydrated ? { opacity: 0 } : false}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >

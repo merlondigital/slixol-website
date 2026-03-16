@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 const pods = [
   {
@@ -67,11 +68,12 @@ function PodCard({
   side: "left" | "right";
   animDelay: number;
 }) {
+  const hydrated = useHydrated();
   const isHovered = hoveredPod === index;
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: side === "left" ? -30 : 30 }}
+      initial={hydrated ? { opacity: 0, x: side === "left" ? -30 : 30 } : false}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: animDelay, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -134,9 +136,11 @@ function ConnectorLine({
   isActive: boolean;
   delay: number;
 }) {
+  const hydrated = useHydrated();
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={hydrated ? { opacity: 0 } : false}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay }}
@@ -159,6 +163,7 @@ function ConnectorLine({
 }
 
 export default function SlixolModel() {
+  const hydrated = useHydrated();
   const [hoveredPod, setHoveredPod] = useState<number | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<number | null>(null);
 
@@ -225,7 +230,7 @@ export default function SlixolModel() {
               <div className="flex flex-col items-center h-full py-4">
                 {/* Top spine line */}
                 <motion.div
-                  initial={{ opacity: 0 }}
+                  initial={hydrated ? { opacity: 0 } : false}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.3 }}
@@ -237,7 +242,7 @@ export default function SlixolModel() {
 
                 {/* Central SLIXOL core */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={hydrated ? { opacity: 0, scale: 0.8 } : false}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -251,7 +256,7 @@ export default function SlixolModel() {
 
                 {/* Bottom spine line */}
                 <motion.div
-                  initial={{ opacity: 0 }}
+                  initial={hydrated ? { opacity: 0 } : false}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.3 }}
@@ -295,7 +300,7 @@ export default function SlixolModel() {
           {pods.map((pod, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -368,7 +373,7 @@ export default function SlixolModel() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 text-center"

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 const lines = [
   "A slixol azoknak szól, akik hisznek a közösség erejében.",
@@ -47,11 +48,13 @@ function ManifestoLine({ line, index, total }: { line: string; index: number; to
 }
 
 export default function Manifesto() {
+  const hydrated = useHydrated();
+
   return (
     <section className="py-16 md:py-32 px-6 relative overflow-hidden">
       <div className="relative mx-auto max-w-4xl">
         <motion.span
-          initial={{ opacity: 0 }}
+          initial={hydrated ? { opacity: 0 } : false}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="block font-safiro text-5xl md:text-7xl lg:text-8xl text-white/[0.03] uppercase tracking-widest mb-12 text-center select-none"
@@ -66,7 +69,7 @@ export default function Manifesto() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 text-center"

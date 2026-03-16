@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface CaseStudy {
   client: string;
@@ -67,6 +68,8 @@ const caseStudies: CaseStudy[] = [
 ];
 
 export default function CaseStudies() {
+  const hydrated = useHydrated();
+
   return (
     <section id="esettanulmanyok" className="py-16 md:py-24 px-6">
       <div className="mx-auto max-w-7xl">
@@ -91,7 +94,7 @@ export default function CaseStudies() {
           {caseStudies.map((c, i) => (
             <motion.div
               key={c.client}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}

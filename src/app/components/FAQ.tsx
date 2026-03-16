@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface FAQItem {
   q: string;
@@ -157,6 +158,8 @@ function AccordionItem({ item }: { item: FAQItem }) {
 }
 
 export default function FAQ() {
+  const hydrated = useHydrated();
+
   return (
     <section id="gyik" className="py-16 md:py-24 px-6 relative overflow-hidden">
       {/* Background glow orbs */}
@@ -176,7 +179,7 @@ export default function FAQ() {
           {categories.map((cat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05 }}

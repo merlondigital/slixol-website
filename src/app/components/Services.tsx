@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface Service {
   num: string;
@@ -84,6 +85,7 @@ const services: Service[] = [
 ];
 
 export default function Services() {
+  const hydrated = useHydrated();
   const [activeIndex, setActiveIndex] = useState(0);
   const [mobileExpanded, setMobileExpanded] = useState<number | null>(0);
 
@@ -112,7 +114,7 @@ export default function Services() {
 
         {/* Desktop: Book layout */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={hydrated ? { opacity: 0, y: 20 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="hidden lg:flex min-h-[550px] rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm overflow-hidden"
@@ -191,7 +193,7 @@ export default function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.num}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}

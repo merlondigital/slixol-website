@@ -4,6 +4,7 @@ import { type ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 interface Step {
   num: string;
@@ -150,13 +151,14 @@ const steps: Step[] = [
 ];
 
 function StepCard({ step, index }: { step: Step; index: number }) {
+  const hydrated = useHydrated();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={hydrated ? { opacity: 0, y: 20 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -215,6 +217,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
 }
 
 export default function HowWeWork() {
+  const hydrated = useHydrated();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -250,7 +253,7 @@ export default function HowWeWork() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 text-center"

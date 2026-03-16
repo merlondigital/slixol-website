@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useHydrated } from "@/app/hooks/useHydrated";
 import Button from "./ui/Button";
 
 export default function Hero() {
+  const hydrated = useHydrated();
+
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden">
       {/* Video background */}
@@ -23,7 +26,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pb-20 md:pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={hydrated ? { opacity: 0, y: 10 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-6"
@@ -34,7 +37,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={hydrated ? { opacity: 0, y: 20 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="font-safiro text-4xl md:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-white mb-6 max-w-4xl"
@@ -44,7 +47,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-base md:text-lg text-light-gray max-w-2xl mb-10 leading-relaxed"
@@ -54,7 +57,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={hydrated ? { opacity: 0, y: 10 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
         >

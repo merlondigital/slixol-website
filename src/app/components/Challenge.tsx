@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
 import Button from "./ui/Button";
+import { useHydrated } from "@/app/hooks/useHydrated";
 
 const blocks = [
   {
@@ -53,6 +54,8 @@ const blocks = [
 ];
 
 export default function Challenge() {
+  const hydrated = useHydrated();
+
   return (
     <section id="kihivas" className="py-16 md:py-24 px-6 relative overflow-hidden">
       {/* Background glow orbs */}
@@ -90,7 +93,7 @@ export default function Challenge() {
           {blocks.map((block, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={hydrated ? { opacity: 0, y: 20 } : false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -108,7 +111,7 @@ export default function Challenge() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={hydrated ? { opacity: 0, y: 15 } : false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 text-center"
