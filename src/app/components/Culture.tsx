@@ -111,6 +111,8 @@ function FlipCard({
               ...faceBase,
               borderColor: "rgba(255,255,255,0.08)",
               background: "rgba(255,255,255,0.03)",
+              opacity: isFlipped ? 0 : 1,
+              transition: "opacity 0s linear 0.3s",
             }}
           >
             {/* Corner gradient blob */}
@@ -171,6 +173,8 @@ function FlipCard({
               transform: "rotateY(180deg)",
               borderColor: "rgba(255,255,255,0.1)",
               background: "rgba(255,255,255,0.03)",
+              opacity: isFlipped ? 1 : 0,
+              transition: "opacity 0s linear 0.3s",
             }}
           >
             {/* Intensified gradient blob */}
