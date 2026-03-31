@@ -58,8 +58,8 @@ Plans:
   3. Service cards on mobile highlight the active card when it reaches viewport center (matching the HowWeWork blue dot pattern)
 **Plans**: 2 plans
 Plans:
-- [ ] 03-01-PLAN.md — Marquee mobile speed override (MOB-01) + Services scroll activation (MOB-03)
-- [ ] 03-02-PLAN.md — Slixol Model scroll-pod showcase replacing accordion (MOB-02)
+- [x] 03-01-PLAN.md — Marquee mobile speed override (MOB-01) + Services scroll activation (MOB-03)
+- [x] 03-02-PLAN.md — Slixol Model scroll-pod showcase replacing accordion (MOB-02)
 **UI hint**: yes
 
 ## Progress

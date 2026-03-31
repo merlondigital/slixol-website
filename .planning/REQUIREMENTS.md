@@ -33,9 +33,9 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 ### Mobile UX
 
-- [ ] **MOB-01**: Marquee/news bar animation completes faster (all 3 words visible sooner)
+- [x] **MOB-01**: Marquee/news bar animation completes faster (all 3 words visible sooner)
 - [ ] **MOB-02**: Slixol Model shows scroll-based pod showcase — one pod visible at a time with compact diagram
-- [ ] **MOB-03**: Service cards activate on scroll (blue dot pattern triggers when card reaches viewport center, matching HowWeWork pattern)
+- [x] **MOB-03**: Service cards activate on scroll (blue dot pattern triggers when card reaches viewport center, matching HowWeWork pattern)
 
 ## v2 Requirements
 
@@ -66,9 +66,9 @@ Requirements for this iteration. Each maps to roadmap phases.
 | FOOT-01 | Phase 1 | Complete |
 | CASE-01 | Phase 2 | Complete |
 | CASE-02 | Phase 2 | Complete |
-| MOB-01 | Phase 3 | Pending |
+| MOB-01 | Phase 3 | Complete |
 | MOB-02 | Phase 3 | Pending |
-| MOB-03 | Phase 3 | Pending |
+| MOB-03 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total
