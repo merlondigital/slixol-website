@@ -19,8 +19,8 @@ Requirements for this iteration. Each maps to roadmap phases.
 
 ### Case Studies
 
-- [ ] **CASE-01**: Case study cards display Lottie animations instead of ImagePlaceholder components
-- [ ] **CASE-02**: Lottie files are lazy-loaded (not loaded until section approaches viewport)
+- [x] **CASE-01**: Case study cards display Lottie animations instead of ImagePlaceholder components
+- [x] **CASE-02**: Lottie files are lazy-loaded (not loaded until section approaches viewport)
 
 ### Partners Grid
 
@@ -64,8 +64,8 @@ Requirements for this iteration. Each maps to roadmap phases.
 | PART-01 | Phase 1 | Complete |
 | PART-02 | Phase 1 | Complete |
 | FOOT-01 | Phase 1 | Complete |
-| CASE-01 | Phase 2 | Pending |
-| CASE-02 | Phase 2 | Pending |
+| CASE-01 | Phase 2 | Complete |
+| CASE-02 | Phase 2 | Complete |
 | MOB-01 | Phase 3 | Pending |
 | MOB-02 | Phase 3 | Pending |
 | MOB-03 | Phase 3 | Pending |

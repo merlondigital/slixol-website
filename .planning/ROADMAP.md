@@ -13,7 +13,7 @@ Three phases deliver the full client feedback iteration: quick content and UI fi
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Content & UI Polish** - Text fixes, hero CTA redesign, partners grid fix, footer overscroll bug
-- [ ] **Phase 2: Lottie Integration** - Replace ImagePlaceholder with Lottie animations in case studies
+- [x] **Phase 2: Lottie Integration** - Replace ImagePlaceholder with Lottie animations in case studies (completed 2026-03-31)
 - [ ] **Phase 3: Mobile UX** - Marquee speed, Slixol Model scroll-pod, Services scroll-activation
 
 ## Phase Details
@@ -45,7 +45,7 @@ Plans:
   3. No measurable increase in initial page load (Lottie files lazy-loaded, not in critical bundle)
 **Plans**: 1 plan
 Plans:
-- [ ] 02-01-PLAN.md — Install lottie-react, extract JSON files, create LottieAnimation component, wire into CaseStudies
+- [x] 02-01-PLAN.md — Install lottie-react, extract JSON files, create LottieAnimation component, wire into CaseStudies
 **UI hint**: yes
 
 ### Phase 3: Mobile UX
@@ -67,5 +67,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Content & UI Polish | 2/3 | In Progress|  |
-| 2. Lottie Integration | 0/TBD | Not started | - |
+| 2. Lottie Integration | 1/1 | Complete   | 2026-03-31 |
 | 3. Mobile UX | 0/TBD | Not started | - |
