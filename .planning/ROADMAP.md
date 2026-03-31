@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Content & UI Polish** - Text fixes, hero CTA redesign, partners grid fix, footer overscroll bug
 - [x] **Phase 2: Lottie Integration** - Replace ImagePlaceholder with Lottie animations in case studies (completed 2026-03-31)
-- [ ] **Phase 3: Mobile UX** - Marquee speed, Slixol Model scroll-pod, Services scroll-activation
+- [x] **Phase 3: Mobile UX** - Marquee speed, Slixol Model scroll-pod, Services scroll-activation (completed 2026-03-31)
 
 ## Phase Details
 
@@ -71,4 +71,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Content & UI Polish | 2/3 | In Progress|  |
 | 2. Lottie Integration | 1/1 | Complete   | 2026-03-31 |
-| 3. Mobile UX | 0/2 | Not started | - |
+| 3. Mobile UX | 2/2 | Complete   | 2026-03-31 |
