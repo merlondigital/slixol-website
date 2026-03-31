@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
@@ -127,13 +127,41 @@ function PodCard({
 export default function SlixolModel() {
   const hydrated = useHydrated();
   const [hoveredPod, setHoveredPod] = useState<number | null>(null);
-  const [mobileExpanded, setMobileExpanded] = useState<number | null>(null);
+  const [activePod, setActivePod] = useState(0);
   const desktopRef = useRef<HTMLDivElement>(null);
+  const mobileContainerRef = useRef<HTMLDivElement>(null);
   const isDesktopInView = useInView(desktopRef, { once: true, margin: "-100px" });
 
-  function handleMobileToggle(index: number) {
-    setMobileExpanded((prev) => (prev === index ? null : index));
-  }
+  useEffect(() => {
+    const container = mobileContainerRef.current;
+    if (!container) return;
+
+    function updateActivePod() {
+      if (window.innerWidth >= 1024) return; // lg: desktop uses radial, no-op
+      const podEls = container!.querySelectorAll<HTMLDivElement>("[data-pod-index]");
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+      const center = window.innerHeight * 0.5;
+      podEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(elCenter - center);
+        if (dist < bestDistance) {
+          bestDistance = dist;
+          bestIndex = Number(el.dataset.podIndex);
+        }
+      });
+      setActivePod(bestIndex);
+    }
+
+    window.addEventListener("scroll", updateActivePod, { passive: true });
+    window.addEventListener("resize", updateActivePod, { passive: true });
+    updateActivePod();
+    return () => {
+      window.removeEventListener("scroll", updateActivePod);
+      window.removeEventListener("resize", updateActivePod);
+    };
+  }, []);
 
   return (
     <section id="modszertan" className="section-padding px-6">
@@ -345,85 +373,77 @@ export default function SlixolModel() {
         </div>
 
         {/* ============================================================ */}
-        {/*  MOBILE: Accordion layout with always-visible tags           */}
+        {/*  MOBILE: Scroll-pod showcase — one pod at a time             */}
         {/* ============================================================ */}
-        <div className="lg:hidden flex flex-col gap-3">
-          {pods.map((pod, i) => (
-            <motion.div
-              key={i}
-              initial={hydrated ? { opacity: 0, y: 20 } : false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
-              <button
-                onClick={() => handleMobileToggle(i)}
-                className={`w-full rounded-2xl border p-4 text-left transition-all duration-300 cursor-pointer ${
-                  mobileExpanded === i
-                    ? "bg-dark-surface border-blue/30"
-                    : "elevated-card"
+        <div className="lg:hidden" ref={mobileContainerRef}>
+          {/* 5-dot mini progress indicator */}
+          <div className="flex items-center justify-center gap-2.5 mb-8">
+            {pods.map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  scale: activePod === i ? 1 : 0.7,
+                  opacity: activePod === i ? 1 : 0.3,
+                }}
+                transition={{ duration: 0.2 }}
+                className={`rounded-full transition-colors duration-300 ${
+                  activePod === i
+                    ? "w-5 h-2 bg-blue"
+                    : "w-2 h-2 bg-white/30"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Pod cards — each occupies natural height, scroll drives activePod */}
+          <div className="space-y-4">
+            {pods.map((pod, i) => (
+              <motion.div
+                key={i}
+                data-pod-index={i}
+                initial={hydrated ? { opacity: 0, y: 20 } : false}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className={`rounded-2xl border p-5 transition-all duration-300 ${
+                  activePod === i
+                    ? "border-blue/30 bg-dark-surface shadow-[0_0_30px_rgba(0,56,255,0.06)]"
+                    : "elevated-card opacity-60"
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`transition-colors duration-300 ${
-                        mobileExpanded === i ? "text-blue" : "text-gray"
-                      }`}
-                    >
-                      {podIcons[i]}
-                    </span>
-                    <span className="font-safiro text-lg text-white heading-card">{pod.name}</span>
-                  </div>
-                  <motion.svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-gray"
-                    animate={{ rotate: mobileExpanded === i ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
+                {/* Icon + Name */}
+                <div className="flex items-center gap-3 mb-3">
+                  <span
+                    className={`transition-colors duration-300 ${
+                      activePod === i ? "text-blue" : "text-gray"
+                    }`}
                   >
-                    <polyline points="6 9 12 15 18 9" />
-                  </motion.svg>
+                    {podIcons[i]}
+                  </span>
+                  <span className="font-safiro text-lg text-white heading-card">{pod.name}</span>
                 </div>
 
-                {/* Service tags — always visible on mobile too */}
-                <div className="flex flex-wrap gap-1.5 mt-3">
+                {/* Description — always visible (no accordion) */}
+                <p className="text-sm text-secondary leading-relaxed mb-3">{pod.description}</p>
+
+                {/* Service tags */}
+                <div className="flex flex-wrap gap-1.5">
                   {pod.services.map((service) => (
                     <span
                       key={service}
-                      className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] text-secondary"
+                      className={`px-2.5 py-1 rounded-lg border text-[11px] transition-all duration-300 ${
+                        activePod === i
+                          ? "bg-blue/[0.08] border-blue/20 text-blue/80"
+                          : "bg-white/[0.04] border-white/[0.08] text-secondary"
+                      }`}
                     >
                       {service}
                     </span>
                   ))}
                 </div>
-              </button>
-
-              <AnimatePresence>
-                {mobileExpanded === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 pb-4 pt-2">
-                      <p className="text-sm text-secondary leading-relaxed">
-                        {pod.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
