@@ -83,10 +83,13 @@ body {
   will-change: transform;
 }
 
-/* Mobile: faster marquee so all 3 words appear within ~2 seconds */
+/* Mobile: faster marquee */
 @media (max-width: 767px) {
   .animate-marquee {
-    animation-duration: 6s;
+    animation-duration: 8s;
+  }
+  .animate-marquee-reverse {
+    animation-duration: 10s;
   }
 }
 
