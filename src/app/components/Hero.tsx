@@ -73,35 +73,37 @@ export default function Hero() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            {/* Outer glow */}
-            <span className="absolute -inset-1 rounded-full bg-magenta/30 blur-lg group-hover:bg-magenta/50 group-hover:blur-xl transition-all duration-500" />
-
-            {/* Glass shell with depth */}
             <span
-              className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-white text-base border border-white/10 transition-all duration-300 group-hover:border-white/20"
+              className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-white text-base border border-white/20 transition-all duration-300"
               style={{
-                background: "linear-gradient(135deg, #ef34ff, #d020e0)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 4px rgba(0,0,0,0.3), 0 4px 24px rgba(239,52,255,0.45)",
+                backgroundColor: "#ef34ff",
+                boxShadow: "none",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLSpanElement).style.borderColor = "rgba(255,255,255,0.4)";
+                (e.currentTarget as HTMLSpanElement).style.boxShadow = "0 0 20px rgba(239,52,255,0.5)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLSpanElement).style.borderColor = "rgba(255,255,255,0.2)";
+                (e.currentTarget as HTMLSpanElement).style.boxShadow = "none";
               }}
             >
               Díjmentes konzultáció
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/15 border border-white/10 group-hover:bg-white/25 transition-colors duration-300">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="transform group-hover:translate-x-0.5 transition-transform duration-300"
-                >
-                  <path
-                    d="M3 8h10m0 0L9 4m4 4L9 12"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="transform group-hover:translate-x-0.5 transition-transform duration-300"
+              >
+                <path
+                  d="M3 8h10m0 0L9 4m4 4L9 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
           </motion.a>
 
