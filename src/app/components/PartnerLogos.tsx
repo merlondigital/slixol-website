@@ -60,7 +60,7 @@ export default function PartnerLogos() {
           className="text-base md:text-lg text-secondary max-w-2xl mx-auto"
           delay={0.1}
         >
-          Több mint 60 vállalkozás bízik a Slixol megoldásaiban.
+          Több mint 60 vállalkozás bízik a slixol megoldásaiban.
         </AnimatedText>
       </div>
 

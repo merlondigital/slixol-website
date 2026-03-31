@@ -140,7 +140,7 @@ export default function SlixolModel() {
       <div className="mx-auto max-w-7xl">
         {/* Section header */}
         <div className="text-center mb-10 lg:mb-14">
-          <SectionLabel>Slixol Modell</SectionLabel>
+          <SectionLabel>slixol Modell</SectionLabel>
           <AnimatedText
             as="h2"
             className="font-safiro text-3xl md:text-4xl lg:text-5xl heading-section text-white mt-6 mb-6"

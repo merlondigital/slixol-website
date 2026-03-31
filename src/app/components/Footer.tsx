@@ -187,7 +187,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-secondary">
-              &copy; {new Date().getFullYear()} Slixol. Minden jog fenntartva.
+              &copy; {new Date().getFullYear()} slixol. Minden jog fenntartva.
             </p>
             <p className="text-xs text-secondary/40">
               megújulás &middot; fejlődés &middot; adaptálódás
