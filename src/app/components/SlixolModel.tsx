@@ -377,30 +377,11 @@ export default function SlixolModel() {
         {/*  MOBILE: Scroll-pod showcase — one pod at a time             */}
         {/* ============================================================ */}
         <div className="lg:hidden" ref={mobileContainerRef}>
-          {/* 5-dot mini progress indicator */}
-          <div className="flex items-center justify-center gap-2.5 mb-8">
-            {pods.map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  scale: activePod === i ? 1 : 0.7,
-                  opacity: activePod === i ? 1 : 0.3,
-                }}
-                transition={{ duration: 0.2 }}
-                className={`rounded-full transition-colors duration-300 ${
-                  activePod === i
-                    ? "w-5 h-2 bg-blue"
-                    : "w-2 h-2 bg-white/30"
-                }`}
-              />
-            ))}
-          </div>
-
           {/* Pod cards — 2-center-3 structured layout */}
           <div className="space-y-3">
 
             {/* Top row: pods 0 (Marketing) and 1 (Sales) */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[0, 1].map((i) => (
                 <motion.div
                   key={i}
@@ -409,7 +390,7 @@ export default function SlixolModel() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className={`rounded-xl border p-3 transition-all duration-300 ${
+                  className={`rounded-xl border p-4 sm:p-3 transition-all duration-300 ${
                     activePod === i
                       ? "border-blue/30 bg-dark-surface shadow-[0_0_24px_rgba(0,56,255,0.06)]"
                       : "elevated-card opacity-60"
@@ -420,11 +401,11 @@ export default function SlixolModel() {
                     <span className={`transition-colors duration-300 ${activePod === i ? "text-blue" : "text-gray"}`}>
                       {React.cloneElement(podIcons[i] as React.ReactElement<{ width: number; height: number }>, { width: 16, height: 16 })}
                     </span>
-                    <span className="font-safiro text-sm text-white heading-card leading-tight">{pods[i].name}</span>
+                    <span className="font-safiro text-sm sm:text-sm text-white heading-card leading-tight">{pods[i].name}</span>
                   </div>
 
-                  {/* Description — visible on wider top-row cards */}
-                  <p className="text-xs text-secondary leading-relaxed mb-2 line-clamp-2">{pods[i].description}</p>
+                  {/* Description */}
+                  <p className="text-xs text-secondary leading-relaxed mb-2 line-clamp-3 sm:line-clamp-2">{pods[i].description}</p>
 
                   {/* Service tags */}
                   <div className="flex flex-wrap gap-1">
@@ -481,7 +462,7 @@ export default function SlixolModel() {
             </div>
 
             {/* Bottom row: pods 2 (Systems), 3 (AI), 4 (Brand) */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {[2, 3, 4].map((i) => (
                 <motion.div
                   key={i}
@@ -490,7 +471,7 @@ export default function SlixolModel() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className={`rounded-xl border p-3 transition-all duration-300 ${
+                  className={`rounded-xl border p-4 sm:p-3 transition-all duration-300 ${
                     activePod === i
                       ? "border-blue/30 bg-dark-surface shadow-[0_0_24px_rgba(0,56,255,0.06)]"
                       : "elevated-card opacity-60"
@@ -504,7 +485,10 @@ export default function SlixolModel() {
                     <span className="font-safiro text-sm text-white heading-card leading-tight">{pods[i].name}</span>
                   </div>
 
-                  {/* Service tags only — no description (3-col cards are narrow) */}
+                  {/* Description — visible when stacked (1-col), hidden in 3-col */}
+                  <p className="text-xs text-secondary leading-relaxed mb-2 sm:hidden">{pods[i].description}</p>
+
+                  {/* Service tags */}
                   <div className="flex flex-wrap gap-1">
                     {pods[i].services.map((service) => (
                       <span
