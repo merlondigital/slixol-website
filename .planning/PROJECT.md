@@ -31,15 +31,15 @@ The website must feel premium, intentional, and fast — every interaction shoul
 - ✓ Thank-you page (/koszonjuk) — existing
 - ✓ Custom 404 page — existing
 - ✓ Cloudflare Workers deployment via OpenNext — existing
+- ✓ Brand name lowercase "slixol" everywhere — Phase 1
+- ✓ Hero CTA flat magenta with hover glow — Phase 1
+- ✓ En-dashes in all content — Phase 1
+- ✓ Partners grid behind logos with closed borders — Phase 1
+- ✓ Footer overscroll 3x debounced threshold — Phase 1
 
 ### Active
 
-- [ ] Brand name casing: "slixol" lowercase everywhere (fix "Slixol" occurrences)
-- [ ] Hero CTA: remove 3D button effect, add hover animation (outline, subtle movement)
-- [ ] Replace em-dashes (—) with en-dashes (–) across all content
 - [ ] Case studies: replace ImagePlaceholder with Lottie animations (4 files provided)
-- [ ] Partners grid: fix grid overlay (behind elements, closed borders top+bottom)
-- [ ] Footer overscroll: fix sensitivity — require 3 consecutive overscroll attempts (bug: triggers on first)
 - [ ] Mobile marquee/news bar: speed up animation (3 words appear too slowly)
 - [ ] Slixol Model mobile: scroll-based pod showcase, one pod visible at a time, compact circle diagram
 - [ ] Services mobile: scroll-triggered card activation (blue dot pattern on viewport center, like HowWeWork)
@@ -95,4 +95,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 after initialization*
+*Last updated: 2026-03-31 after Phase 1 completion*
