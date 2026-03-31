@@ -86,10 +86,10 @@ body {
 /* Mobile: faster marquee */
 @media (max-width: 767px) {
   .animate-marquee {
-    animation-duration: 8s;
+    animation-duration: 5s;
   }
   .animate-marquee-reverse {
-    animation-duration: 10s;
+    animation-duration: 7s;
   }
 }
 
