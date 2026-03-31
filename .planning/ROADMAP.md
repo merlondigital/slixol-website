@@ -56,7 +56,10 @@ Plans:
   1. Marquee news bar on mobile completes a full cycle visibly faster — all 3 words appear within ~2 seconds
   2. Slixol Model on mobile shows one pod at a time with a compact circle diagram, advancing on scroll
   3. Service cards on mobile highlight the active card when it reaches viewport center (matching the HowWeWork blue dot pattern)
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 03-01-PLAN.md — Marquee mobile speed override (MOB-01) + Services scroll activation (MOB-03)
+- [ ] 03-02-PLAN.md — Slixol Model scroll-pod showcase replacing accordion (MOB-02)
 **UI hint**: yes
 
 ## Progress
@@ -68,4 +71,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Content & UI Polish | 2/3 | In Progress|  |
 | 2. Lottie Integration | 1/1 | Complete   | 2026-03-31 |
-| 3. Mobile UX | 0/TBD | Not started | - |
+| 3. Mobile UX | 0/2 | Not started | - |
