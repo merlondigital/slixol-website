@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import SectionLabel from "./ui/SectionLabel";
 import AnimatedText from "./ui/AnimatedText";
-import ImagePlaceholder from "./ui/ImagePlaceholder";
+import LottieAnimation from "./ui/LottieAnimation";
 import Button from "./ui/Button";
 import { useHydrated } from "@/app/hooks/useHydrated";
 
@@ -15,6 +15,7 @@ interface CaseStudy {
   solution: string;
   resultHighlight: string;
   resultDetail: string;
+  lottieFile: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -29,6 +30,7 @@ const caseStudies: CaseStudy[] = [
     resultHighlight: "2-3x havi megkeresés",
     resultDetail:
       "A beérkező, havi megkeresések száma a duplájára, esetenként a triplájára nőtt. A nyári szezonban teljes kapacitás kihasználtságot értünk el, sőt az igény még magasabb is volt, mint amit a cég ki tudott szolgálni.",
+    lottieFile: "/lottie/case-1.json",
   },
   {
     client: "Hydropool",
@@ -41,6 +43,7 @@ const caseStudies: CaseStudy[] = [
     resultHighlight: "Havi 100+ lead",
     resultDetail:
       "Kiszámítható ajánlatkérési csatornák épültek fel, ami kb. havi 100 lead beérkezését szállítja ebben a prémium szegmensben. 2025 januárjában a cég eddigi legsikeresebb évkezdését értük el közösen az ügyféllel.",
+    lottieFile: "/lottie/case-2.json",
   },
   {
     client: "Ariston",
@@ -53,6 +56,7 @@ const caseStudies: CaseStudy[] = [
     resultHighlight: "40.000+ kattintás, 54% konverzió",
     resultDetail:
       "Egyik példaként említhetjük az erős Google fókuszú always-on kampányok felépítését, aminek köszönhetően több mint 40.000 kattintás érkezett a weboldalra 2024-ben. A kattintások 54%-át pedig beérkező konverzióként könyvelhettük el, ami kimagasló aránynak számít ebben az iparágban.",
+    lottieFile: "/lottie/case-3.json",
   },
   {
     client: "REHM",
@@ -65,6 +69,7 @@ const caseStudies: CaseStudy[] = [
     resultHighlight: "10x követők, 1M+ elérés",
     resultDetail:
       "A merész TikTok stratégiának köszönhetően ebben a réspiaci szektorban 7 hónap alatt, organikusan: követők száma 10x, 1M feletti elért közönség, beérkező megkeresések és ajánlatkérések egy eddig nem használt csatornáról, teltházas nyílt napok.",
+    lottieFile: "/lottie/case-4.json",
   },
 ];
 
@@ -153,9 +158,9 @@ export default function CaseStudies() {
                   </div>
                 </div>
 
-                {/* Right: image placeholder (~40%) */}
+                {/* Right: Lottie animation (~40%) */}
                 <div className="flex-[2] p-6 md:p-8 lg:p-10 flex items-center">
-                  <ImagePlaceholder className="aspect-[4/3] w-full" />
+                  <LottieAnimation src={c.lottieFile} className="aspect-square w-full" />
                 </div>
               </div>
             </motion.div>
