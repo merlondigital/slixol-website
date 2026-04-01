@@ -115,8 +115,8 @@ function FlipCard({
             className="rounded-2xl p-7 md:p-8 flex flex-col justify-between"
             style={{
               ...faceBase,
-              background: "#171e35",
-              border: "1px solid rgba(77,122,255,0.18)",
+              background: "#1c2545",
+              border: "1px solid rgba(77,122,255,0.22)",
               opacity: isFlipped ? 0 : 1,
               transition: "opacity 0s linear 0.3s",
             }}
@@ -126,7 +126,7 @@ function FlipCard({
               className="absolute inset-0 rounded-2xl pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at 80% 20%, rgba(0,56,255,0.15), transparent 50%)",
+                  "radial-gradient(circle at 80% 20%, rgba(0,56,255,0.2), transparent 50%)",
               }}
             />
 
@@ -163,8 +163,8 @@ function FlipCard({
             style={{
               ...faceBase,
               transform: "rotateY(180deg)",
-              background: "#1a2240",
-              border: "1px solid rgba(77,122,255,0.25)",
+              background: "#1e284a",
+              border: "1px solid rgba(77,122,255,0.28)",
               opacity: isFlipped ? 1 : 0,
               transition: "opacity 0s linear 0.3s",
             }}
@@ -174,7 +174,7 @@ function FlipCard({
               className="absolute inset-0 rounded-2xl pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 50%, rgba(0,56,255,0.18), transparent 60%)",
+                  "radial-gradient(circle at 50% 50%, rgba(0,56,255,0.22), transparent 60%)",
               }}
             />
 
@@ -246,7 +246,7 @@ export default function Culture() {
           </AnimatedText>
           <AnimatedText
             as="p"
-            className="text-base md:text-lg text-secondary max-w-2xl mx-auto"
+            className="text-base md:text-lg text-blue/60 max-w-2xl mx-auto"
             delay={0.1}
           >
             Az igazi értékek egy szervezet életében azok a viselkedésmódok és
